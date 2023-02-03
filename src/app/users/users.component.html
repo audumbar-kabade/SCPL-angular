@@ -1,0 +1,37 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <span><img src="../../../assets/supportive.png" class="img-fluid" width="25%" alt="Supportive-logo"></span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="'/accounts'" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Accounts </a>
+        <a mat-list-item [routerLink]="'/create-account'" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"> Create Account </a>
+        <a mat-list-item [routerLink]="'/contacts'" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          Contacts </a>
+        <a mat-list-item [routerLink]="'/create-contact'" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"> Create Contact </a>
+        <a mat-list-item [routerLink]="'/activities'" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"> Activities </a>
+        <a mat-list-item [routerLink]="'/create-activity'" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}"> Create Activity </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <app-users-dashboard class="m-3"></app-users-dashboard>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
